@@ -1,0 +1,10 @@
+strict digraph {
+  constructor
+  LogOwner
+  split [color=brown]
+  LogSplit
+  withdraw
+  constructor -> LogOwner
+  split -> LogSplit
+}
+
