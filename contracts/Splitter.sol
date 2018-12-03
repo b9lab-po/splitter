@@ -25,10 +25,10 @@ contract Splitter {
         require(msg.sender == owner, "You are not the owner!");
         require(msg.value > 0, "The amount is too low!");
 
-        uint256 halfAmount = (msg.value - (msg.value % 2)) / 2;
+        uint256 halfAmount = msg.value / 2;
 
-        balances[firstPerson] = halfAmount;
-        balances[secondPerson] = halfAmount;
+        balances[firstPerson] += halfAmount;
+        balances[secondPerson] += halfAmount;
 
         emit LogSplit(msg.sender, firstPerson, secondPerson, halfAmount);
     }
@@ -36,8 +36,8 @@ contract Splitter {
     function withdraw() public {
         uint amount = balances[msg.sender];
         balances[msg.sender] = 0;
-        msg.sender.transfer(amount);
         emit LogWithdraw(msg.sender, amount);
+        msg.sender.transfer(amount);
     }
 }
 
