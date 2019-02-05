@@ -6,11 +6,11 @@ contract Splitter {
     address public secondPerson;
 
     mapping(address => uint) public balances;
-    
+
     event LogOwner(address indexed owner);
     event LogSplit(address owner, address firstPerson, address secondPerson, uint amount);
     event LogWithdraw(address person, uint amount);
-    
+
     constructor (address firstPerson, address secondPerson) public {
         require(firstPerson != address(0), "The address is not set");
         require(secondPerson != address(0), "The address is not set");
@@ -27,12 +27,13 @@ contract Splitter {
 
         uint256 halfAmount = msg.value / 2;
 
+        balances[owner] += msg.value % 2 == 0 ? 0 : 1;
         balances[firstPerson] += halfAmount;
         balances[secondPerson] += halfAmount;
 
         emit LogSplit(msg.sender, firstPerson, secondPerson, halfAmount);
     }
-    
+
     function withdraw() public {
         uint amount = balances[msg.sender];
         balances[msg.sender] = 0;
