@@ -1,0 +1,21 @@
+{
+  "name": "splitter",
+  "version": "1.0.0",
+  "description": "Splitter project",
+  "scripts": {
+    "lint": "eslint . --fix",
+    "test": "mocha"
+  },
+  "author": "Patryk Okuniewicz",
+  "license": "MIT",
+  "devDependencies": {
+    "truffle": "4.1.13",
+    "truffle-contract": "^1.1.11",
+    "web3": "^0.18.2",
+    "mocha": "^5.2.0",
+    "eslint": "^3.14.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0"
+  }
+}
